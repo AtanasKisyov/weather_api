@@ -1,15 +1,7 @@
 import os
 from pathlib import Path
 
-from celery import Celery
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
-
-app = Celery('celery_app')
-
-app.config_from_object('django.conf:settings', namespace='CELERY')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key_for_testing')
 
@@ -27,6 +19,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'drf_yasg',
+
+    'weather_api.main',
 ]
 
 MIDDLEWARE = [
