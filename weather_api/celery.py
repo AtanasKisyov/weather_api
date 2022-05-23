@@ -1,8 +1,7 @@
 import os
-
 from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'async_demos.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'weather_api.settings')
 
 app = Celery('weather_api')
 
