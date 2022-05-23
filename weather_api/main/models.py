@@ -18,6 +18,9 @@ class City(models.Model):
 
 class Temperature(models.Model):
 
+    class Meta:
+        get_latest_by = 'time'
+
     city = models.ForeignKey(
         City,
         on_delete=models.CASCADE,
