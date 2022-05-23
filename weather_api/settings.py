@@ -55,9 +55,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'weather_api.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -86,7 +83,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EET'
 
 USE_I18N = True
 
@@ -105,8 +102,7 @@ CELERY_TIMEZONE = 'Europe/Athens'
 
 CELERY_BEAT_SCHEDULE = {
     'add-everyday': {
-        'task': 'weather_api.main.tasks.add',
-        'schedule': crontab(hour=15, minute=46),
-        'args': (40, 2),
+        'task': 'weather_api.main.tasks.get_available_cities_current_weather',
+        'schedule': crontab(hour=6, minute=0),
     },
 }
